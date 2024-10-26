@@ -1,0 +1,6 @@
+<h2>Mauna Loa CO2</h2>
+<p>CO2 vs Date plot here was generated from data recorded under the <a href="https://scrippsco2.ucsd.edu/" target="_blank">Scripps CO2 program.</a></p>
+<p>
+The Scripps CO2 program was initiated in 1956 by Charles David Keeling and 
+operated under his direction until his passing in 2005. It is currently being continued by Ralph F. Keeling, 
+who also runs a parallel program at SIO to measure changes in atmospheric O2 and Ar abundances (Scripps O2 Program).</p>

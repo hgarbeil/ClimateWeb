@@ -1,0 +1,7 @@
+<h2>Global Average Temperatures</h2>
+<p>Data from the <a href='https://berkeleyearth.org/global-temperature-report-for-2023/' target="_blank">Berkeley Earth Global Temperature Report.<a>
+Berkeley Earth, a California-based non-profit research organization, has been preparing independent analyses of global mean temperature changes since 2013. The following is our report on global mean temperature during 2023.
+</p>
+<p>
+They conclude that 2023 was the warmest year on Earth since 1850, exceeding the previous record set in 2016 by a clear and definitive margin.
+</p>
