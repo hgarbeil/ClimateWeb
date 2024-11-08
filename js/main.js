@@ -6,6 +6,9 @@ let decData=[] ;
 let co2Val =[] ;
 let xval = [] ;
 let yval = [] ;
+let minYear = 1980 ;
+let gtemps_chart = null ;
+let mloa_chart = null ;
 
 const ctx_mloa = document.getElementById('mloa_chart').getContext("2d");
 const ctx_gtemps = document.getElementById('gtemps_chart').getContext("2d");
@@ -43,7 +46,6 @@ function readGlobalTemps () {
         for (let iline=96; iline<lines.length; iline++){
             if (lines[iline].length<30) continue ;
             let colval = lines[iline].split(/\s+/) ;
-            console.log(colval[2]) ;
             xval.push(Number(colval[1])+Number(colval[2])/12.) ;
             yval.push(colval[3]) ;
 
@@ -75,7 +77,13 @@ function readGlobalTemps () {
                             display: true,
                             
                         },
-                        min: 1980
+                        min: minYear,
+                        ticks: {
+                            callback: function (value) {
+                                // return value.toLocaleString();
+                                return value;
+                            }
+                        },
                         
                     },
                     y: {
@@ -91,7 +99,10 @@ function readGlobalTemps () {
             }
         } ;
         
-        new  Chart(ctx_gtemps, config) ;
+        if (gtemps_chart){
+            gtemps_chart.destroy();
+        }
+        gtemps_chart = new  Chart(ctx_gtemps, config) ;
         p_right.innerHTML = "Global temperature anomaly relative to the average global temperature for the 1850-1900 time period."
 
 
@@ -136,7 +147,13 @@ function readMLoa () {
                             text: "Year",
                             display: true
                         },
-                        min: 1960
+                        min: minYear,
+                        ticks: {
+                            callback: function (value) {
+                                // return value.toLocaleString();
+                                return value;
+                            }
+                        },
                         
                     },
                     y: {
@@ -152,13 +169,23 @@ function readMLoa () {
             }
         } ;
         
-        new  Chart(ctx_mloa, config) ;
-        p_left.innerHTML = "Atmospheric CO2 concentrations measured atop Mauna Loa summit in Hawaii, continuous insitu measurements." ;
+        if (mloa_chart){
+            mloa_chart.destroy() ;
+        }
+        mloa_chart = new  Chart(ctx_mloa, config) ;
+        p_left.innerHTML = "Seasonally adjusted atmospheric CO2 concentrations measured atop Mauna Loa summit in Hawaii, continuous insitu measurements." ;
         decData = [] ;
         co2Val= [] ;
         
     },false);
 }
+
+function modStartYear () {
+    minYear = document.getElementById('input_startYear').value ;
+    readMLoa() ;
+    readGlobalTemps() ;
+}
+
 
 readMLoa () ;
 readGlobalTemps() ;

@@ -18,7 +18,7 @@ header {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   background: linear-gradient(175deg, #3f87a6, #ebf8e1, #f69d3c);
   box-shadow: 6px 0px 5px gray;
 }
@@ -27,7 +27,7 @@ header {
 
 .divimage img {
     border-radius: 35px ;
-    height: 6rem ;
+    height: 8rem ;
     padding: 25px ;
     
 
@@ -38,7 +38,7 @@ header {
 .topnav ul {
   position : relative ;
   bottom : -50px ;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   display: flex;
   justify-content: space-around;
   gap: 10px;
@@ -97,7 +97,7 @@ header {
 }
 
 
-section.maincontent {
+section.maincontent_top,section.maincontent_bottom {
     display: flex ;
     flex-wrap: wrap ;
     justify-content: space-evenly;
@@ -118,13 +118,40 @@ section.maincontent {
 }
 .main-footer {
     display: flex ;
-    justify-content: flex-start ;
+    justify-content: space-around ;
+    flex-wrap: wrap ;
     align-items: center ;
     background: var(--clr-neutral) ;
-    gap: 10px ;
+    gap: 50px ;
     padding: 10px 30px ;
 
+
 }
+ .footer-left {
+    flex: 0 0 30% ;
+    font-size: 1.3rem ;
+    border : 1px solid var(--clr-sky-900) ;
+    padding: 10px 10px ;
+    border-radius: 10px ;
+    height:max-content ;
+    width: 30rem  ;
+    
+ }
+
+ .footer-right{ 
+    flex: 1 1 60% ;
+
+ }
+
+ .footer-left form {
+    display: flex ;
+    gap: 10px ;
+    align-items: left ;
+    flex-direction: column; 
+    max-width: 20rem ;
+
+
+ }
 /* 
 
 .main-left {
@@ -157,7 +184,31 @@ section.maincontent {
     color: var(--clr-neutral) ;
 
 }
-.furtherinfo:hover {
+.furtherinfo:hover , .submitButton:Hover{
     cursor: pointer;
     color: yellow ;
+}
+
+.main-footer form input {
+    font-size:1.2rem ;
+}
+.main-footer form label {
+    font-size: 1rem ;
+}
+
+.footer-description {
+    border: 1px solid var(--clr-sky-900) ;
+    border-radius : 10px ;
+    padding: 5px 15px ;
+
+}
+
+.submitButton {
+    background-color: var(--clr-sky-900);
+    color: var(--clr-neutral) ;
+    max-width : 10rem ;
+    border-radius: 15px;
+    padding: 5px 0px ;
+    text-align: center ;
+    margin-left: 10px ;
 }

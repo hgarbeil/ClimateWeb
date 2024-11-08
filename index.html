@@ -36,34 +36,86 @@
         <div></div>
         <div></div>
     </section>
-    <section class="maincontent">
-        <div class="main-left">
-            <h2>CO2 from Mauna Loa Time Series</h2>
-            <div class="chartdiv">
-                <canvas id="mloa_chart"></canvas>
-                <p class="leftinfo">Hello</p>
+    <section class="main">
+        <section class="maincontent_top">
+            <div class="main-left">
+                <h2>CO2 from Mauna Loa Time Series</h2>
+                <div class="chartdiv">
+                    <canvas id="mloa_chart"></canvas>
+                    <p class="leftinfo">Hello</p>
+                </div>
+                <button id="mloa_info" class="furtherinfo" onclick="furtherInfo(0)">Further Info</button>
             </div>
-            <button id="mloa_info" class="furtherinfo" onclick="furtherInfo(0)">Further Info</button>
-        </div>
-        <div class="main-right">
-            <h2>Global Temperature Anomaly Time Series</h2>
-            <div class="chartdiv">
-                <canvas id="gtemps_chart"></canvas>
-                <p class="rightinfo">Hello</p>
+            <div class="main-right">
+                <h2>Global Temperature Anomaly Time Series</h2>
+                <div class="chartdiv">
+                    <canvas id="gtemps_chart"></canvas>
+                    <p class="rightinfo">Hello</p>
+                </div>
+                <button id="gtemps_info" class="furtherinfo" onclick="furtherInfo(1)">Further Info</button>
             </div>
-            <button id="gtemps_info" class="furtherinfo" onclick="furtherInfo(1)">Further Info</button>
-        </div>
-    </section>
-    <section class="main-footer"
-            <h2>Year range</h2>
-            <h5>Start Year :</h5>
-            <input type="range" min="2000" max="2025" value="50" class="slider" id="yearRange">
-          
+        </section>
+        <section class="main-footer">
+            <div class="footer-left">
+            <form>
+            <label for="quantity">Start Year (between  1950 and 2020) :</label>
+            <input type="number" id="input_startYear" name="quantity" min="1950" max="2020" value="1980"> 
+            <input type="text" class="submitButton startYearSubmit" type="submit" value="Submit" onclick="modStartYear()">
+            </form>
+            </div>
+            <div class="footer-right footer-description">
+                <h2>Climate Change and CO2</h2>
+                <p>The Mauna Loa summit CO2 measurements shown on the above left illustrate the continual buildup of atmospheric CO2. CO2 is a major greenhouse component
+                    and can be a likely cause of the global temperature warming which has been taking place and is reflected on the global temperature anomaly plot on the above right. 
+                </p>
+            </div>
+        </section>
+    
+        <section class="maincontent_bottom">
+            <div class="main-left">
+                <h2>CO2 Emission by Continent</h2>
+                <div class="chartdiv">
+                    <canvas id="continent_chart"></canvas>
+                    <p class="leftinfo">Hello</p>
+                </div>
+                <button id="continent_info" class="furtherinfo" onclick="furtherInfo(0)">Further Info</button>
+            </div>
+            <div class="main-right">
+                <h2>CO2 Emission by Country</h2>
+                <div class="chartdiv">
+                    <canvas id="co2sources_chart"></canvas>
+                    <p class="rightinfo"></p>
+                </div>
+                <button id="country_info" class="furtherinfo" onclick="furtherInfo(1)">Further Info</button>
+            </div>
+
+        </section>
+       
+        <!-- <section class="maincontent_lower">
+            <div class="main-left"></div>
+                <h2>CO2 from Mauna Loa Time Series</h2>
+                <div class="chartdiv">
+                    <canvas id="mix_chart"></canvas>
+                    <p class="leftinfo">Hello</p>
+                </div>
+                <button id="mix_info" class="furtherinfo" onclick="furtherInfo(0)">Further Info</button>
+            </div>
+            <div class="main-right">
+                <h2>Global Temperature Anomaly Time Series</h2>
+                <div class="chartdiv">
+                    <canvas id="country_mix_chart"></canvas>
+                    <p class="rightinfo">Hello</p>
+                </div>
+                <button id="country_mix_info" class="furtherinfo" onclick="furtherInfo(1)">Further Info</button>
+            </div>
+
+        </section> -->
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" referrerpolicy="no-referrer"></script> -->
     <script src="js/ajax-utils.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/co2_sources.js"></script>
     
 </body>
 </html>
