@@ -31,6 +31,7 @@ function GHG_Composition(){
         // },
         datasets: [
             {
+                
                 data: Pctage,
                 backgroundColor: [
                     "#AA3322",
@@ -38,12 +39,29 @@ function GHG_Composition(){
                     "#AAAA22",
                     "#22AA33",
                 ],
-                label: 'My dataset'
+                
             }]
     };
 
     let composition_chart = new Chart(ctx_composition, {
-        type: 'bar',data:data,
+        type: 'bar',
+        data:data,
+        options: { 
+            scales: {
+            y: {
+                title: {
+                    text: "Percent",
+                    display: true,
+                    
+                }
+            }
+            },
+            plugins: {
+            legend: {
+                display:false ,
+            } 
+        }   
+        }
 
     }
 

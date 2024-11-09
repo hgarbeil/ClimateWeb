@@ -127,8 +127,6 @@ section.maincontent_bottom .main-left, section.maincontent_bottom .main-right {
 }
 
 #composition_chart {
-    height:400px !important ; 
-    width: 400px !important ;
 }
 .main-footer {
     display: flex ;
