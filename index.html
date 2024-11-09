@@ -57,11 +57,11 @@
         </section>
         <section class="main-footer">
             <div class="footer-left">
-            <form>
-            <label for="quantity">Start Year (between  1950 and 2020) :</label>
-            <input type="number" id="input_startYear" name="quantity" min="1950" max="2020" value="1980"> 
-            <input type="text" class="submitButton startYearSubmit" type="submit" value="Submit" onclick="modStartYear()">
-            </form>
+                <form>
+                <label for="quantity">Start Year (between  1950 and 2020) :</label>
+                <input type="number" id="input_startYear" name="quantity" min="1950" max="2020" value="1980"> 
+                <input type="text" class="submitButton startYearSubmit" type="submit" value="Submit" onclick="modStartYear()">
+                </form>
             </div>
             <div class="footer-right footer-description">
                 <h2>Climate Change and CO2</h2>
@@ -73,17 +73,17 @@
     
         <section class="maincontent_bottom">
             <div class="main-left">
-                <h2>CO2 Emission by Continent</h2>
+                <h2>Greenhouse Gas Composition</h2>
                 <div class="chartdiv">
-                    <canvas id="continent_chart"></canvas>
-                    <p class="leftinfo">Hello</p>
+                    <canvas id="composition_chart"></canvas>
+                    <p class="leftinfo">Greenhouse Gas Components and their percentages.</p>
                 </div>
                 <button id="continent_info" class="furtherinfo" onclick="furtherInfo(0)">Further Info</button>
             </div>
             <div class="main-right">
                 <h2>CO2 Emission by Country</h2>
                 <div class="chartdiv">
-                    <canvas id="co2sources_chart"></canvas>
+                    <canvas id="continent_chart"></canvas>
                     <p class="rightinfo"></p>
                 </div>
                 <button id="country_info" class="furtherinfo" onclick="furtherInfo(1)">Further Info</button>

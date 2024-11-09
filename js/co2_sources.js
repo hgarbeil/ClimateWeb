@@ -1,8 +1,10 @@
 // CO2 Production and Sources of CO2
 
 const ctx_continent = document.getElementById("continent_chart").getContext("2d"); ;
-const ctx_co2sources = document.getElementById("co2sources_chart").getContext("2d"); 
+// const ctx_co2sources = document.getElementById("co2sources_chart").getContext("2d"); 
+const ctx_composition = document.getElementById('composition_chart').getContext("2d") ;
 let continent_chart  = null ;
+let composition_chart = null ;
 
 ifile = "data/continents_energymix.csv" ;
 sfile = "data/continents_source.csv" ;
@@ -10,14 +12,44 @@ sfile = "data/continents_source.csv" ;
 let myCO2 = [[]] ;
 let year = [] ;
 let datasets = [] ;
-let colors = ['#e81416','#ffa500','#faeb36','#79c314','#487de7','#4b369d','#70369d']
+let colors = ['#e81416','#ffa500','#faeb36','#79c314','#487de7','#4b369d','#70369d'] ;
+const GHG = ['Carbon Dioxide','Methane','Nitrous Oxide', 'Fluorinated Gases'] ;
+const Pctage = [76.,16.,6.,2.] ;
 
 
 const continents=['Africa','Asia','Europe','North America','South America','Oceania'] ;
 
 
 // const ctx_gtemps = document.getElementById('gtemps_chart').getContext("2d");
+function GHG_Composition(){
 
+    var data = {
+        labels: GHG,
+        // options :
+        // {
+        //     responsive:True ,
+        // },
+        datasets: [
+            {
+                data: Pctage,
+                backgroundColor: [
+                    "#AA3322",
+                    "#AA33AA",
+                    "#AAAA22",
+                    "#22AA33",
+                ],
+                label: 'My dataset'
+            }]
+    };
+
+    let composition_chart = new Chart(ctx_composition, {
+        type: 'bar',data:data,
+
+    }
+
+    ) ;
+
+} 
 
 
 // How does a country get its energy
@@ -224,10 +256,10 @@ function CO2_source () {
             ]
         }
 
-        co2source_chart = new Chart(ctx_co2sources, {
-            type: 'bar',
-            labels : CO2Cols,
-            data : data
+        // co2source_chart = new Chart(ctx_co2sources, {
+        //     type: 'bar',
+        //     labels : CO2Cols,
+        //     data : data
 
                 
             
@@ -241,7 +273,8 @@ function CO2_source () {
             // }
             
 
-        }) ;
+        //}
+        //) ;
 
 
 
@@ -250,3 +283,4 @@ function CO2_source () {
 }
         
 CO2_source () ;
+GHG_Composition() ;
