@@ -28,6 +28,9 @@ function furtherInfo (num){
         case 1 :
             infile = 'data/gtemps.txt';
             break ;
+        case 2 :
+            infile = 'data/ghg.txt' ;
+            break ;
     }
     $ajaxUtils.sendGetRequest (infile, function (responseText){
         document.getElementById("topDiv").innerHTML = `${responseText}`}
