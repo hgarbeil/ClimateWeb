@@ -4,7 +4,9 @@ import panel as pn
 import plotly.express as px
 import math
 
-countries=['United States','Russia','China','Australia','Japan','Germany','India','United Kingdom', 'France','Indonesia','Iceland']
+
+countries = ['China','United States','India','Germany','France','United Kingdom','Russia','Japan','Brazil','Iran']
+# countries=['United States','Russia','China','Australia','Japan','Germany','India','United Kingdom', 'France','Indonesia','Iceland']
 continents=['Africa','Asia','Europe','North America','South America','Oceania','World']
 sources=['co2_coal','co2_oil','co2_gas','co2_cement']
 components=['co2','share_global_co2','co2_per_gdp','co2_per_capita','methane']
@@ -114,6 +116,8 @@ df=df.fillna(0)
 print(df.columns)
 df=df[['country','year','population','gdp','co2','coal_co2','gas_co2','oil_co2','cement_co2','methane']]
 df_major=df[(df['country'].isin(countries)) & (df['year']>1940)]
+# countries_1 = df['country'].unique()
+# print(countries_1)
 #df_countries_full=df[df.iso_code!='0']
 df_continents_full = df[(df['country'].isin(continents)) & (df['year']>1940) ]
 df_major.to_csv ("../data/country_source.csv", index=False)
@@ -121,6 +125,7 @@ df_continents_full.to_csv("../data/continents_source.csv", index=False)
 # df_countries=df_countries_full[df_countries_full.year==2018]
 #print(df_major.sample(30))
 df_major_year=df_major[df_major.year==2022]
+df_major_year=df_major_year.sort_values(by=['co2'],ascending=False)
 df_major_year.to_csv('../data/countries_source_oneyear.csv', index=False)
 
 

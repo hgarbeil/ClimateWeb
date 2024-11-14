@@ -14,6 +14,8 @@ const ctx_mloa = document.getElementById('mloa_chart').getContext("2d");
 const ctx_gtemps = document.getElementById('gtemps_chart').getContext("2d");
 const p_left = document.querySelector ('.leftinfo') ;
 const p_right = document.querySelector ('.rightinfo') ;
+const mainEl = document.querySelector('.main') ;
+const navItemsEls = document.querySelectorAll('.topnav-items');
 
 
 
@@ -30,6 +32,9 @@ function furtherInfo (num){
             break ;
         case 2 :
             infile = 'data/ghg.txt' ;
+            break ;
+        case 3 : 
+            infile = 'data/continents_emit.txt';
             break ;
     }
     $ajaxUtils.sendGetRequest (infile, function (responseText){

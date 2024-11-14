@@ -12,15 +12,15 @@
     <header>
         <div class="divimage"><img src="images/earth.jpg" alt="View of earth from space" srcset=""></div>
         <div class="title-block">
-            <h2>Climate Change</h2>
+            <h2>Climate Change and Greenhouse Gases</h2>
             <p>Exploring Global and USA Climate Change</p>
         </div>
         <div>
             
             <nav class="topnav">
                 <ul class="topnav-list">
-                    <li class="topnav-items">Home</li>
-                    <li class="topnav-items">CO2 Gases</li>
+                    <li class="topnav-items active" id="navlink_home" ><a href="index.html">Home</a></li>
+                    <li class="topnav-items" onclick="loadCountry()" id="navlink_country" >CO2 By Country</li>
                     <li class="topnav-items">CO2 Contributions</li>
                     <li class="topnav-items">Sources</li>
                 </ul>
@@ -81,7 +81,7 @@
                 <button id="continent_info" class="furtherinfo" onclick="furtherInfo(2)">Further Info</button>
             </div>
             <div class="main-right">
-                <h2>CO2 Emission by Country</h2>
+                <h2>CO2 Emission by Continent</h2>
                 <div class="chartdiv">
                     <canvas id="continent_chart"></canvas>
                     <p class="rightinfo"></p>
@@ -116,6 +116,7 @@
     <script src="js/ajax-utils.js"></script>
     <script src="js/main.js"></script>
     <script src="js/co2_sources.js"></script>
+    <script src="js/country.js"></script>
     
 </body>
 </html>
