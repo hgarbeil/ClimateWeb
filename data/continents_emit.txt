@@ -1,0 +1,16 @@
+<h2>Emissions By Continent</h2>
+<p>
+Compositions of the four major greenhouse gases taken from the NRDC <a href="https://www.nrdc.org/stories/greenhouse-effect-101#gases">Greenhouse Effect 101 website</a>.
+This site is an excellent primer on the role of atmospheric greenhouse gases play in global climate change and the role human activities play in the production and emission of the gases. 
+</p>
+<p>
+The major component of the gases, carbon dioxide, is a direct byproduct of numerous human activities, many related to the burning of fossil fuels. Because of this,
+much of human's efforts has been to control climate warming is to find and employ alternatives to fossil fuels without significantly impacting negatively upon their quality of life. 
+A continual challenge is to convince government and societies that a clean environment is a very significant factor in quality of life.
+</p>
+<p>
+The United Nations has recognized the need to address the ever increasing concentration of CO2 in the atmosphere and
+ has set goals for its member countries to lower carbon input into the environment plan. The 
+<a href="https://www.un.org/en/climatechange" >United Nations Climate Change Action</a> website details the problem of climate change and the 
+global efforts, programs, and aspirations to address the severity of impacts related to continued global warming.
+</p>

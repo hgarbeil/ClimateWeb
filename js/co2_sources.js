@@ -169,7 +169,6 @@ function CO2_source () {
                 if (lines[iline].length<10) continue ;
                 columnVal = lines[iline].split(",") ;
                 if (columnVal[0] != continents[icont]) continue ;
-                console.log (lines[iline]) ;
                 myCO2.push(columnVal[4]) ;
                 year.push(columnVal[1]);
             }

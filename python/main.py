@@ -124,9 +124,15 @@ df_major.to_csv ("../data/country_source.csv", index=False)
 df_continents_full.to_csv("../data/continents_source.csv", index=False)
 # df_countries=df_countries_full[df_countries_full.year==2018]
 #print(df_major.sample(30))
+
+for country in countries :
+    outfile = country+'_co2.txt'
+    df_major[(df['country']==country)].to_csv('../data/'+outfile,index=False)
 df_major_year=df_major[df_major.year==2022]
 df_major_year=df_major_year.sort_values(by=['co2'],ascending=False)
 df_major_year.to_csv('../data/countries_source_oneyear.csv', index=False)
+
+
 
 
 yearmks = [*range(1950,2020,10)]
