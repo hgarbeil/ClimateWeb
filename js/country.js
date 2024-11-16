@@ -12,7 +12,9 @@ let mainstring = `<section class="maincontent_top">
                 <h2>Top CO2 Emitting Countries</h2>
                 <div class="chartdiv">
                     <div class='table' id='tablediv'>Puta table in here</div>
-                    <p class="leftinfo"></p>
+                    <p class="leftinfo">This table shows the 10 CO2 emission producing countries from the year 2022. Note that China, 
+                    USA, India, and Russia make up over 50% of the world CO2 emissions of 38 billion MTonnes. United States and Russia far exceed the 
+                    world CO2 per capita of approximately of 4.7 Tonnes/person.</p>
                 </div>
                 <button id="mloa_info" class="furtherinfo" onclick="furtherInfo(4)">Further Info</button>
             </div>
@@ -20,7 +22,9 @@ let mainstring = `<section class="maincontent_top">
                 <h2 id="plotHeader"></h2>
                 <div class="chartdiv">
                     <canvas id="country_chart"></canvas>
-                    <p class="rightinfo">Hello</p>
+                    <p class="rightinfo">Time series plot showing the selected country's total 
+                    CO2 emissions and the share produced 
+                    from the major fossil fuel sources.</p>
                 </div>
                 <button id="gtemps_info" class="furtherinfo" onclick="furtherInfo(5)">Further Info</button>
             </div>
@@ -39,7 +43,7 @@ function loadCountry () {
     $ajaxUtils.sendGetRequest (countryFile, function (responseText){
         let lines = responseText.split('\n');
         countryString = lines ;
-        let makeTableStr = '<table><thead><tr><th>Country</th><th>CO2 (MTonnes)</th><th>CO2 Per Capita</th><th>CO2 Per GDP</th></tr></thead><tbody>'
+        let makeTableStr = '<table><thead><tr><th>Country</th><th>CO2 (MT)</th><th>CO2 Per Capita (T/person)</th><th>CO2 Per GDP (T/$)</th></tr></thead><tbody>'
 
         for (let iline=1; iline<lines.length; iline++) {
             if (lines[iline].length<7) continue ;
