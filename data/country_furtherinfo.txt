@@ -1,5 +1,4 @@
-<h2>Emissions By Continent</h2>
-<p>
+<h2>CO2 Emissions by Country</h2>
 <p>
 Data on a global, continental, and country was collected and made available from the Our World in Data Website. Specifically, data presented here 
 is discussed and available at the <a href="https://ourworldindata.org/co2-and-greenhouse-gas-emissions"  target="_blank"> Our World in Data CO2 and Greenhouse Gas</a> online resource. This site is a spectacular storehouse of original sources, detailed visualizations and links to further explore

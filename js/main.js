@@ -36,6 +36,9 @@ function furtherInfo (num){
         case 3 : 
             infile = 'data/continents_emit.txt';
             break ;
+        case 4 :
+            infile = 'data/country_furtherinfo.txt' ;
+            break ;
     }
     $ajaxUtils.sendGetRequest (infile, function (responseText){
         document.getElementById("topDiv").innerHTML = `${responseText}`}
