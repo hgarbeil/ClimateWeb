@@ -1,4 +1,4 @@
-Climate change dashboard / website featuring the role of CO2.
+Climate change dashboard / website focusing upon CO2 and the role of various countries and continents in generation and emission into the atmosphere.
 
 Website viewable at hgarbeil.github.io/ClimateWeb.
 
