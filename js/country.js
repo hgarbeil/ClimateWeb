@@ -17,7 +17,7 @@ let mainstring = `<section class="maincontent_top">
                 <button id="mloa_info" class="furtherinfo" onclick="furtherInfo(4)">Further Info</button>
             </div>
             <div class="main-right">
-                <h2>Global Temperature Anomaly Time Series</h2>
+                <h2 id="plotHeader"></h2>
                 <div class="chartdiv">
                     <canvas id="country_chart"></canvas>
                     <p class="rightinfo">Hello</p>
@@ -73,8 +73,12 @@ function loadCountry () {
 function rowclick (indexVal){
     let country = countries[indexVal-1] ;
     let cfile = 'data/'+country+'_co2.txt' ;
+    let titleStr = "CO2 Time Series for "+country ;
     let year = [] ;
     let co2 = [] ;
+    let co2_coal=[];
+    let co2_gas=[] ;
+    let co2_oil=[] ;
     
     console.log(countryString[indexVal]) ;
     for (tr of tableRows) {
@@ -90,7 +94,9 @@ function rowclick (indexVal){
             console.log(lines[iline]);
             let colVal = lines[iline].split(',') ;
             year.push(colVal[1]) ;
-
+            co2_coal.push(colVal[5]) ;
+            co2_gas.push(colVal[6]) ;
+            co2_oil.push(colVal[7]) ;
             co2.push (colVal[4]) ;
         }
 
@@ -100,14 +106,52 @@ function rowclick (indexVal){
             y: co2[i]
             };
         }) ;
+        let chartData_coal = year.map((x,i)=>{
+            return { 
+            x: x,
+            y: co2_coal[i]
+            };
+        }) ;
+        let chartData_gas = year.map((x,i)=>{
+            return { 
+            x: x,
+            y: co2_gas[i]
+            };
+        }) ;
+        let chartData_oil = year.map((x,i)=>{
+            return { 
+            x: x,
+            y: co2_oil[i]
+            };
+        }) ;
+
+        document.getElementById('plotHeader').innerHTML = titleStr ;
         let config = {type:'scatter',
             data: { 
                 datasets: [{ 
-                    label: 'CO2 for '+country,
+                    label:  'CO2',
                     data: chartData, 
-                    backgroundColor: 'rgba(75, 0, 192, 0.2)', 
+                    backgroundColor: 'rgba(75, 0, 192, 0.99)', 
                     showLine: true,
-                }], 
+                },
+                { 
+                    label: 'CO2 from Coal',
+                    data: chartData_coal, 
+                    backgroundColor: 'rgba(75, 35, 55, 0.99)', 
+                    showLine: true,
+                },
+                { 
+                    label: 'CO2 from Gas',
+                    data: chartData_gas, 
+                    backgroundColor: 'rgba(75, 192, 0, 0.99)', 
+                    showLine: true,
+                },{ 
+                    label: 'CO2 from Oil',
+                    data: chartData_oil, 
+                    backgroundColor: 'rgba(192, 0, 35, 0.99)', 
+                    showLine: true,
+                },
+            ], 
             },
 
             options: {
@@ -134,7 +178,7 @@ function rowclick (indexVal){
                     },
                     y: {
                         title: {
-                            text: "Temp Anomaly (C)",
+                            text: "MTonnes CO2",
                             display: true
                         }
                         

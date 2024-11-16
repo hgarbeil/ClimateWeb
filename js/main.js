@@ -69,7 +69,7 @@ function readGlobalTemps () {
                 datasets: [{ 
                     label: 'Global Temp Anomaly',
                     data: chartData, 
-                    backgroundColor: 'rgba(75, 0, 192, 0.2)', 
+                    backgroundColor: 'rgba(147, 0, 192, 0.8)', 
                 }], 
             },
             options: {
