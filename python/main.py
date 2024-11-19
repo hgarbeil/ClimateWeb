@@ -5,7 +5,7 @@ import plotly.express as px
 import math
 
 
-countries = ['China','United States','India','Germany','France','United Kingdom','Russia','Japan','Brazil','Iran','World']
+countries = ['World','China','United States','India','Germany','France','United Kingdom','Russia','Japan','Brazil','Iran']
 # countries=['United States','Russia','China','Australia','Japan','Germany','India','United Kingdom', 'France','Indonesia','Iceland']
 continents=['Africa','Asia','Europe','North America','South America','Oceania','World']
 sources=['co2_coal','co2_oil','co2_gas','co2_cement']
@@ -81,7 +81,7 @@ dfmix = dfmix[dfmix['year']==2023]
 #dfmix['total']=dfmix['coal','oil','gas','nuclear','hydro','wind','solar','other'].sum(axis=1)
 
 # get component fractions ie normalize
-dfmix['total']=dfmix.iloc[:,3:12].sum(axis=1)
+dfmix['total']=dfmix.iloc[:,3:11].sum(axis=1)
 dfmix['Coal']=(dfmix['coal']/dfmix['total']).apply(lambda x: round_to_sigfigs(x, 4))
 dfmix['Oil']=(dfmix['oil']/dfmix['total']).apply(lambda x: round_to_sigfigs(x, 4))
 dfmix['Gas']=(dfmix['gas']/dfmix['total']).apply(lambda x: round_to_sigfigs(x, 4))
@@ -91,7 +91,19 @@ dfmix['Wind']=(dfmix['wind']/dfmix['total']).apply(lambda x: round_to_sigfigs(x,
 dfmix['Solar']=(dfmix['solar']/dfmix['total']).apply(lambda x: round_to_sigfigs(x, 4))
 dfmix['Other']=(dfmix['other']/dfmix['total']).apply(lambda x: round_to_sigfigs(x, 4))
 dfmix = dfmix.drop(['coal','oil','gas','nuclear','hydro','wind','solar','other'],axis=1)
-dfmix.to_csv('../data/country_energymix_2023.csv',index=False)
+dfmix = dfmix.sort_values(by=['total'],ascending=False)
+# dfmix.to_csv('../data/country_energymix_2023.csv',index=False) 
+
+count = 0
+for cntry in countries :
+    dfmix1 = dfmix[dfmix['country']==cntry]
+    if count == 0 :
+        tmp = dfmix1.copy()
+    else :
+        tmp = pd.concat([tmp,dfmix1])
+    count=count+1
+tmp.to_csv('../data/country_energymix_2023.csv',index=False) 
+print (tmp)
 
 
 # print (dfmix.sample(5))

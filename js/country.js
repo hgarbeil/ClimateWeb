@@ -92,21 +92,28 @@ function loadCountryMix (country) {
         let lines = responseText.split('\n') ;
         let COComp  =[] ;
         let COWorld =[] ;
+        let COCoal = [] ;
+        let COOil = [] ;
+        let COGas = [] ;
+        let CONuc = [] ;
+        let myCountries=[] ;
         for (let iline=1; iline<lines.length; iline++){
             if (lines[iline].length < 7) {
                 continue ;
             }
             let ColVal = lines[iline].split(',');
-            if (ColVal[0] != country) 
-                continue ;
-            
-            COComp.push (ColVal[4]*100.);
-            COComp.push (ColVal[5]*100.);
-            COComp.push (ColVal[6]*100.);
-            COComp.push (ColVal[7]*100.);
-            COComp.push (ColVal[8]*100.);
-            COComp.push (ColVal[9])*100.;
-            COComp.push (ColVal[10]*100.);
+            // if (ColVal[0] != country) 
+            //     continue ;
+            myCountries.push(ColVal[0]);
+            COCoal.push (ColVal[4]*100.);
+            COOil.push (ColVal[5]*100.);
+            COGas.push (ColVal[6]*100.);
+            CONuc.push (ColVal[7]*100)
+            // COComp.push (ColVal[7]*100.);
+            // COComp.push (ColVal[8]*100.);
+            // COComp.push (ColVal[9])*100.;
+            // COComp.push (ColVal[10]*100.);
+            // COAll.push (COComp) ;
 
 
         }
@@ -129,8 +136,27 @@ function loadCountryMix (country) {
 
         }
 
+        for (let iline=1; iline<lines.length; iline++){
+            if (lines[iline].length < 7) {
+                continue ;
+            }
+            let ColVal = lines[iline].split(',');
+            if (ColVal[0] != 'World') 
+                continue ;
+            
+            COWorld.push (ColVal[4]*100.);
+            COWorld.push (ColVal[5]*100.);
+            COWorld.push (ColVal[6]*100.);
+            COWorld.push (ColVal[7]*100.);
+            COWorld.push (ColVal[8]*100.);
+            COWorld.push (ColVal[9])*100.;
+            COWorld.push (ColVal[10]*100.);
+
+
+        }
+
         var data = {
-            labels: labels,
+            labels: myCountries ,
             // options :
             // {
             //     responsive:True ,
@@ -138,21 +164,38 @@ function loadCountryMix (country) {
             datasets: [
                 {
                     
-                    data: COWorld,
-                    label: "World",
+                    data: COCoal,
+                    label: "Coal",
                     backgroundColor: [
                         "#AA3322"
                     ],
                     
                 },{
                     
-                    data: COComp,
-                    label: country,
+                    data: COOil,
+                    label: "Oil",
                     backgroundColor: [
                         "#22AA33",
                     ],
                     
+                },{
+                    
+                    data: COGas,
+                    label: "Gas",
+                    backgroundColor: [
+                        "#22AAAA",
+                    ],
+                    
+                },{
+                    
+                    data: CONuc,
+                    label: "Nuclear",
+                    backgroundColor: [
+                        "#2233AA",
+                    ],
+                    
                 }
+
             ]
         };
 
