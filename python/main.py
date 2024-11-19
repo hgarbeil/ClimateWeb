@@ -5,7 +5,7 @@ import plotly.express as px
 import math
 
 
-countries = ['China','United States','India','Germany','France','United Kingdom','Russia','Japan','Brazil','Iran']
+countries = ['China','United States','India','Germany','France','United Kingdom','Russia','Japan','Brazil','Iran','World']
 # countries=['United States','Russia','China','Australia','Japan','Germany','India','United Kingdom', 'France','Indonesia','Iceland']
 continents=['Africa','Asia','Europe','North America','South America','Oceania','World']
 sources=['co2_coal','co2_oil','co2_gas','co2_cement']
@@ -41,6 +41,7 @@ mloa_df.to_csv('../data/mloa_co2.csv', index=False) ;
 
 
 # energy mix --- needs pre-processing
+# https://ourworldindata.org/grapher/per-capita-energy-stacked ## source is downloaded from this page
 dfmix = pd.read_csv('../data/per-capita-energy-stacked.csv')
 dfcont = dfmix[dfmix.Entity.isin(continents)]
 print(dfcont.head(10))
@@ -75,7 +76,7 @@ dfcont.to_csv ('../data/continents_energymix.csv', index=False)
 dfmix = dfmix[dfmix.Entity.isin(countries)]
 dfmix.columns=['country','code','year','coal','oil','gas','nuclear','hydro','wind','solar','other']
 dfmix = dfmix[dfmix['year']==2023]
-dfmix=dfmix.dropna()
+# dfmix=dfmix.dropna()
 
 #dfmix['total']=dfmix['coal','oil','gas','nuclear','hydro','wind','solar','other'].sum(axis=1)
 

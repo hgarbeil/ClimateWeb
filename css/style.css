@@ -2,7 +2,7 @@
   --clr-sky-100: #add8e6;
   --clr-sky-500: #2f66a6 ;
   --clr-sky-900: #1f5796;
-  --clr-hotearth: #fa6c14;
+  --clr-hotearth: #ea6c14;
   --clr-neutral : #ebf8e1 ;
   --clr-neutral-gray : #aeafaf ;
   --clr-accent-100: #5255d6 ;
@@ -52,7 +52,7 @@ header {
 
 .topnav-list li {
   flex: 1 1 0 ;
-  color: yellow;
+  color: var(--clr-hotearth);
   text-align: center ;
   text-decoration: none;
 
@@ -70,6 +70,8 @@ header {
 
 .topnav-list li.active {
     background : var(--clr-accent-100) ;
+    color : yellow ;
+
 }
 
 .topnav-list li a {
@@ -78,7 +80,7 @@ header {
 }
 
 .topnav-list li a:visited {
-    color: yellow ;
+    color:var(--clr-hotearth) ;
 }
 
 .topnav-list li a:hover  {

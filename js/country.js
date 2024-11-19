@@ -1,10 +1,12 @@
 const countryNavItem = document.getElementById('navlink_country') ;
 let countryFile = 'data/countries_source_oneyear.csv' ;
+let countryMixFile = 'data/country_energymix_2023.csv'
 let countryString = [] ;
 let tableRows= [] ;
 let country_chart=null ;
-let countries = ['China','United States','India','Russia','Japan','Iran','Germany','Brazil','United Kingdom','France'] ;
+let countries = ['World','China','United States','India','Russia','Japan','Iran','Germany','Brazil','United Kingdom','France'] ;
 let ctx_country = null ;
+let energymix_chart = null ;
 
 
 let mainstring = `<section class="maincontent_top">
@@ -28,7 +30,16 @@ let mainstring = `<section class="maincontent_top">
                 </div>
                 <button id="gtemps_info" class="furtherinfo" onclick="furtherInfo(5)">Further Info</button>
             </div>
-        </section>` ;
+        </section>
+        <section class="maincontent_bottom">
+            <div class="chartdiv">
+                    <canvas id="countrymix_chart"></canvas>
+                    <p class="rightinfo">Time series plot showing the selected country's total 
+                    CO2 emissions and the share produced 
+                    from the major fossil fuel sources.</p>
+                </div>
+                </section>` ;
+
 
 function loadCountry () {
 
@@ -71,6 +82,105 @@ function loadCountry () {
 
     }, false) ;
 
+
+}
+
+// country,code,year,total,Coal,Oil,Gas,Nuclear,Hydro,Wind,Solar,Other
+function loadCountryMix (country) {
+    let labels=['Coal','Oil','Gas','Nuclear','Hydro','Wind','Solar'];
+    $ajaxUtils.sendGetRequest(countryMixFile, function(responseText){
+        let lines = responseText.split('\n') ;
+        let COComp  =[] ;
+        for (let iline=1; iline<lines.length; iline++){
+            if (lines[iline].length < 7) {
+                continue ;
+            }
+            let ColVal = lines[iline].split(',');
+            if (ColVal[0] != country) 
+                continue ;
+            
+            COComp.push (ColVal[4]*100.);
+            COComp.push (ColVal[5]*100.);
+            COComp.push (ColVal[6]*100.);
+            COComp.push (ColVal[7]*100.);
+            COComp.push (ColVal[8]*100.);
+            COComp.push (ColVal[9])*100.;
+            COComp.push (ColVal[10]*100.);
+
+
+        }
+
+        var data = {
+            labels: labels,
+            // options :
+            // {
+            //     responsive:True ,
+            // },
+            datasets: [
+                {
+                    
+                    data: COComp,
+                    backgroundColor: [
+                        "#AA3322",
+                        "#AA33AA",
+                        "#AAAA22",
+                        "#22AA33",
+                    ],
+                    
+                }]
+        };
+
+        let data1 = {
+
+            labels: labels,
+            datasets:[
+            {
+                datasets: COComp,
+                backgroundColor :[
+                    '#AAAA55',
+                    '#AA55AA','#55AAAA','#5555AA','#55AA55','#AA5555','#FFDD22'
+                ],
+                // backgroundColor: [
+                //     "#AA3322",
+                //     "#AA33AA",
+                //     "#AAAA22",
+                //     "#22AA33",
+
+                // ],
+                
+            }],
+        } ;
+        let ctx_countrymix = document.getElementById('countrymix_chart').getContext("2d") ;
+        if (energymix_chart){
+            energymix_chart.destroy () ;
+        }
+        energymix_chart = new Chart(ctx_countrymix, {
+            type: 'bar',
+            data:data,
+            options: { 
+                scales: {
+                y: {
+                    title: {
+                        text: "Percent",
+                        display: true,
+                        
+                    }
+                }
+                },
+                plugins: {
+                legend: {
+                    display:false ,
+                } 
+                }   
+            }
+    
+        });
+        
+        
+
+
+
+    }, false);
 
 }
 
@@ -201,6 +311,7 @@ function rowclick (indexVal){
         country_chart = new  Chart(ctx_country, config) ;
         p_right.innerHTML = 
          "Country CO2";
+        loadCountryMix(country);
 
 
 
