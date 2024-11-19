@@ -91,6 +91,7 @@ function loadCountryMix (country) {
     $ajaxUtils.sendGetRequest(countryMixFile, function(responseText){
         let lines = responseText.split('\n') ;
         let COComp  =[] ;
+        let COWorld =[] ;
         for (let iline=1; iline<lines.length; iline++){
             if (lines[iline].length < 7) {
                 continue ;
@@ -109,6 +110,24 @@ function loadCountryMix (country) {
 
 
         }
+        for (let iline=1; iline<lines.length; iline++){
+            if (lines[iline].length < 7) {
+                continue ;
+            }
+            let ColVal = lines[iline].split(',');
+            if (ColVal[0] != 'World') 
+                continue ;
+            
+            COWorld.push (ColVal[4]*100.);
+            COWorld.push (ColVal[5]*100.);
+            COWorld.push (ColVal[6]*100.);
+            COWorld.push (ColVal[7]*100.);
+            COWorld.push (ColVal[8]*100.);
+            COWorld.push (ColVal[9])*100.;
+            COWorld.push (ColVal[10]*100.);
+
+
+        }
 
         var data = {
             labels: labels,
@@ -119,15 +138,22 @@ function loadCountryMix (country) {
             datasets: [
                 {
                     
-                    data: COComp,
+                    data: COWorld,
+                    label: "World",
                     backgroundColor: [
-                        "#AA3322",
-                        "#AA33AA",
-                        "#AAAA22",
+                        "#AA3322"
+                    ],
+                    
+                },{
+                    
+                    data: COComp,
+                    label: country,
+                    backgroundColor: [
                         "#22AA33",
                     ],
                     
-                }]
+                }
+            ]
         };
 
         let data1 = {
@@ -169,7 +195,7 @@ function loadCountryMix (country) {
                 },
                 plugins: {
                 legend: {
-                    display:false ,
+                    display:true ,
                 } 
                 }   
             }
