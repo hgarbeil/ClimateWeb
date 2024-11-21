@@ -255,7 +255,7 @@ function loadCountryMix (country) {
 
 function rowclick (indexVal){
     let country = countries[indexVal-1] ;
-    let cfile = 'data/'+country+'_co2.txt' ;
+    let cfile = 'data/country/'+country+'_co2.txt' ;
     let titleStr = "CO2 Time Series for "+country ;
     let year = [] ;
     let co2 = [] ;

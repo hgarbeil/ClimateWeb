@@ -1,6 +1,8 @@
 
 const slidebar = document.querySelector(".slidebar");
-const mloa_file = 'data/monthly_in_situ_co2_mlo.csv' ;
+// const mloa_file = 'data/monthly_in_situ_co2_mlo.csv' ;
+const mloa_file = 'data/mloa_co2.csv' ;
+// const global_temp_file ='https://berkeley-earth-temperature-hr.s3.amazonaws.com/Global_TAVG_monthly.txt'; // 
 const global_temp_file = 'data/Global_TAVG_monthly.txt' ;
 let decData=[] ;
 let co2Val =[] ;
@@ -25,22 +27,22 @@ function furtherInfo (num){
     slidebar.classList.toggle ("active") ;
     switch (num) {
         case 0 :
-            infile = 'data/mloa_co2.txt' ;
+            infile = 'data/furtherinfo/mloa_co2.txt' ;
             break ;
         case 1 :
-            infile = 'data/gtemps.txt';
+            infile = 'data/furtherinfo/gtemps.txt';
             break ;
         case 2 :
-            infile = 'data/ghg.txt' ;
+            infile = 'data/furtherinfo/ghg.txt' ;
             break ;
         case 3 : 
-            infile = 'data/continents_emit.txt';
+            infile = 'data/furtherinfo/continents_emit.txt';
             break ;
         case 4 :
-            infile = 'data/country_furtherinfo.txt' ;
+            infile = 'data/furtherinfo/country_furtherinfo.txt' ;
             break ;
         case 5: 
-            infile = 'data/country_emit.txt'
+            infile = 'data/furtherinfo/country_emit.txt'
             break ;
     }
     $ajaxUtils.sendGetRequest (infile, function (responseText){
