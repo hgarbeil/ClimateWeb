@@ -5,6 +5,7 @@ let countryString = [] ;
 let tableRows= [] ;
 let country_chart=null ;
 let countries = ['World','China','United States','India','Russia','Japan','Iran','Germany','Brazil','United Kingdom','France'] ;
+let countries_sub = ['World','China','Russia','Iran'] ;
 let ctx_country = null ;
 let energymix_chart = null ;
 
@@ -32,13 +33,21 @@ let mainstring = `<section class="maincontent_top">
             </div>
         </section>
         <section class="maincontent_bottom">
-            <div class="chartdiv">
-                    <canvas id="countrymix_chart"></canvas>
-                    <p class="rightinfo">Time series plot showing the selected country's total 
-                    CO2 emissions and the share produced 
-                    from the major fossil fuel sources.</p>
+            <div class="main-full">
+            <h2>Per capita primary energy consumption by source, 2023</h2>
+                <div class="split-div">
+                    <div class="split-div-left countryList"></div>
+                    <div class="split-div-right">
+                        
+                        <div class="chartdiv">
+                                <canvas id="countrymix_chart"></canvas>
+                                <p class="rightinfo">Bar chart showing the sources for energy consumption of the top 10 greenhouse emitting countries. 
+                                </p>
+                        </div>
+                    </div>
                 </div>
-                </section>` ;
+            </div>
+        </section>` ;
 
 
 function loadCountry () {
@@ -82,11 +91,47 @@ function loadCountry () {
 
     }, false) ;
 
+    let cboxstring = '<form><ul>' ;
+    let count=0 ;
 
+    for (let cntry of countries) {
+        if (count < 3) {
+        cboxstring = cboxstring + `
+            <li  class="countryList">
+                <input type="checkbox"   class="countryCB" id=${cntry}+"_cb" value=${cntry} checked />
+                <label for=${cntry}>${cntry}</label>
+            </li>` ;
+        }
+        else {
+            cboxstring = cboxstring + `
+            <li  class="countryList">
+                <input type="checkbox"   class="countryCB" id=${cntry}+"_cb" value=${cntry}  />
+                <label for=${cntry}>${cntry}</label>
+            </li>` ;
+
+        }
+        count++ ;
+        
+
+    }
+    cboxstring = cboxstring + '</ul><input type="button" onclick="loadCountryMix()" value="Submit"></form>' ;
+    document.querySelector("div.countryList").innerHTML = cboxstring ;
 }
 
 // country,code,year,total,Coal,Oil,Gas,Nuclear,Hydro,Wind,Solar,Other
-function loadCountryMix (country) {
+function loadCountryMix () {
+
+    var checkboxes = document.querySelectorAll('.countryCB');
+    var selected = [];
+    for (var i=0; i<checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+            // selected.push(checkboxes[i].value);
+            selected.push (countries[i]) ;
+        }
+    }
+
+    console.log(selected) ;
+    
     let labels=['Coal','Oil','Gas','Nuclear','Hydro','Wind','Solar'];
     $ajaxUtils.sendGetRequest(countryMixFile, function(responseText){
         let lines = responseText.split('\n') ;
@@ -96,64 +141,31 @@ function loadCountryMix (country) {
         let COOil = [] ;
         let COGas = [] ;
         let CONuc = [] ;
+        let COHydro = [] ;
+        let COWind = [] ;
+        let COSolar =[] ;
+        let COOther =[] ;
         let myCountries=[] ;
         for (let iline=1; iline<lines.length; iline++){
             if (lines[iline].length < 7) {
                 continue ;
             }
             let ColVal = lines[iline].split(',');
+            if (!selected.includes(ColVal[0])) continue ;
             // if (ColVal[0] != country) 
             //     continue ;
             myCountries.push(ColVal[0]);
             COCoal.push (ColVal[4]*100.);
             COOil.push (ColVal[5]*100.);
             COGas.push (ColVal[6]*100.);
-            CONuc.push (ColVal[7]*100)
-            // COComp.push (ColVal[7]*100.);
-            // COComp.push (ColVal[8]*100.);
-            // COComp.push (ColVal[9])*100.;
-            // COComp.push (ColVal[10]*100.);
-            // COAll.push (COComp) ;
-
+            CONuc.push (ColVal[7]*100) ;
+            COHydro.push (ColVal[8]*100.) ;
+            COWind.push (ColVal[9]*100.) ;
+            COSolar.push (ColVal[10]*100.) ;
+            COOther.push (ColVal[11]*100.) ;
 
         }
-        for (let iline=1; iline<lines.length; iline++){
-            if (lines[iline].length < 7) {
-                continue ;
-            }
-            let ColVal = lines[iline].split(',');
-            if (ColVal[0] != 'World') 
-                continue ;
-            
-            COWorld.push (ColVal[4]*100.);
-            COWorld.push (ColVal[5]*100.);
-            COWorld.push (ColVal[6]*100.);
-            COWorld.push (ColVal[7]*100.);
-            COWorld.push (ColVal[8]*100.);
-            COWorld.push (ColVal[9])*100.;
-            COWorld.push (ColVal[10]*100.);
-
-
-        }
-
-        for (let iline=1; iline<lines.length; iline++){
-            if (lines[iline].length < 7) {
-                continue ;
-            }
-            let ColVal = lines[iline].split(',');
-            if (ColVal[0] != 'World') 
-                continue ;
-            
-            COWorld.push (ColVal[4]*100.);
-            COWorld.push (ColVal[5]*100.);
-            COWorld.push (ColVal[6]*100.);
-            COWorld.push (ColVal[7]*100.);
-            COWorld.push (ColVal[8]*100.);
-            COWorld.push (ColVal[9])*100.;
-            COWorld.push (ColVal[10]*100.);
-
-
-        }
+        
 
         var data = {
             labels: myCountries ,
@@ -167,7 +179,7 @@ function loadCountryMix (country) {
                     data: COCoal,
                     label: "Coal",
                     backgroundColor: [
-                        "#AA3322"
+                        "#e81416"
                     ],
                     
                 },{
@@ -175,7 +187,7 @@ function loadCountryMix (country) {
                     data: COOil,
                     label: "Oil",
                     backgroundColor: [
-                        "#22AA33",
+                        "#ffa500",
                     ],
                     
                 },{
@@ -183,7 +195,7 @@ function loadCountryMix (country) {
                     data: COGas,
                     label: "Gas",
                     backgroundColor: [
-                        "#22AAAA",
+                        "#faeb36",
                     ],
                     
                 },{
@@ -191,7 +203,43 @@ function loadCountryMix (country) {
                     data: CONuc,
                     label: "Nuclear",
                     backgroundColor: [
-                        "#2233AA",
+                        "#79c314",
+                    ],
+                    
+                }
+                ,{
+                    
+                    data: COHydro,
+                    label: "Hydro",
+                    backgroundColor: [
+                        "#487de7",
+                    ],
+                    
+                }
+                ,{
+                    
+                    data: COWind,
+                    label: "Wind",
+                    backgroundColor: [
+                        "#4b369d",
+                    ],
+                    
+                }
+                ,{
+                    
+                    data: COSolar,
+                    label: "Solar",
+                    backgroundColor: [
+                        "#fafa10",
+                    ],
+                    
+                }
+                ,{
+                    
+                    data: COOther,
+                    label: "Other",
+                    backgroundColor: [
+                        "#36704d",
                     ],
                     
                 }
@@ -199,26 +247,7 @@ function loadCountryMix (country) {
             ]
         };
 
-        let data1 = {
-
-            labels: labels,
-            datasets:[
-            {
-                datasets: COComp,
-                backgroundColor :[
-                    '#AAAA55',
-                    '#AA55AA','#55AAAA','#5555AA','#55AA55','#AA5555','#FFDD22'
-                ],
-                // backgroundColor: [
-                //     "#AA3322",
-                //     "#AA33AA",
-                //     "#AAAA22",
-                //     "#22AA33",
-
-                // ],
-                
-            }],
-        } ;
+        
         let ctx_countrymix = document.getElementById('countrymix_chart').getContext("2d") ;
         if (energymix_chart){
             energymix_chart.destroy () ;
@@ -380,7 +409,7 @@ function rowclick (indexVal){
         country_chart = new  Chart(ctx_country, config) ;
         p_right.innerHTML = 
          "Country CO2";
-        loadCountryMix(country);
+        loadCountryMix();
 
 
 

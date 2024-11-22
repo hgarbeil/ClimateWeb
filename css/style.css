@@ -312,6 +312,39 @@ tbody th, tbody td {
   }
 
 
+.main-full {
+    width: 90% ;
+    border: 1px solid var(--clr-sky-900) ;
+    border-radius : 10px ;
+    padding: 5px 15px ;
+    /* margin: auto ; */
+}
+.split-div {
+    display:flex ;
+    justify-content: space-around ;
+     
+
+    
+}
+.split-div .split-div-left {
+    flex: 1 0 25% ; 
+    display: flex ;
+    flex-direction: column ;
+}
+.split-div .split-div-right {
+    flex: 1 1 70% ; 
+    display: flex ;
+    flex-direction: column ;
+
+}
+
+.split-div-right canvas {
+    width : 90% ;
+}
+.countryList ul {
+    list-style-type: none ;
+}
+
 @media only screen and (max-width: 900px) {
     .divimage img {
         display: none ;
