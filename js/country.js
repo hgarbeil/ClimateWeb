@@ -114,7 +114,7 @@ function loadCountry () {
         
 
     }
-    cboxstring = cboxstring + '</ul><input type="button" onclick="loadCountryMix()" value="Submit"></form>' ;
+    cboxstring = cboxstring + '</ul><input type="button" class="submitButton" onclick="loadCountryMix()" value="Submit"></form>' ;
     document.querySelector("div.countryList").innerHTML = cboxstring ;
 }
 
