@@ -323,16 +323,18 @@ tbody th, tbody td {
 }
 .split-div {
     display:flex ;
-    justify-content: space-around ;
+    justify-content: space-between ;
+    overflow: hidden ;
      
 
     
 }
 .split-div .split-div-left {
-    flex: 1 1 25% ; 
+    flex: 1 1 30% ; 
     display: flex ;
     flex-direction: column ;
     font-size : 1.1rem ;
+    min-width: 250px ;
 }
 
 .split-div .split-div-left ul {
@@ -348,7 +350,7 @@ tbody th, tbody td {
 }
 
 .split-div .split-div-right {
-    flex: 1 1 70% ; 
+    flex: 0 1 68% ; 
     display: flex ;
     flex-direction: column ;
 
@@ -362,7 +364,7 @@ tbody th, tbody td {
 }
 
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
     .divimage img {
         display: none ;
     }
