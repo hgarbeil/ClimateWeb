@@ -1,0 +1,6 @@
+<h2>Mauna Loa Summit Measurements</h2>
+<p>The <a href="https://scrippsco2 .ucsd.edu/" target="_blank" >Scripps CO2 Program</a> under the Scripps Institute of Oceanography
+has been measuring atmospheric CO2 since 1956. Beginning in 1958, measurements of the gas have been taken at the Mauna Loa Observatory located at the summit of the volcano.
+</p>
+<p>This time series of measurements has provided an invaluable insight into the role of atmospheric greenhouse gases in climate change. This has proven vital in understanding the role of human activities in 
+greenhouse gases and resulting climate change.</p> 

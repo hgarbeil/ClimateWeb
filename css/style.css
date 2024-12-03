@@ -3,6 +3,7 @@
   --clr-sky-500: #2f66a6 ;
   --clr-sky-900: #1f5796;
   --clr-hotearth: #ea6c14;
+  --clr-goodearth : #4499a9 ;
   --clr-neutral : #ebf8e1 ;
   --clr-neutral-gray : #aeafaf ;
   --clr-accent-100: #5255d6 ;
@@ -145,6 +146,7 @@ section.maincontent_top,section.maincontent_bottom {
 section.maincontent_top .main-left,section.maincontent_top .main-right {
     flex :  1 1 45% ;
     border: 1px solid var(--clr-sky-900) ;
+    box-shadow: 3px 0px 3px var(--clr-sky-900) ;
     padding: 20px 30px ;
     display: flex ;
     flex-direction: column ;
@@ -237,12 +239,12 @@ section.maincontent_bottom .main-left, section.maincontent_bottom .main-right {
 
 .furtherinfo {
     font-size: 1.2rem ;
-    border-radius: 15px;
-    padding: 5px 10px ;
+    border-radius: 10px;
+    padding: 5px 15px ;
     display: flex ;
     margin:auto ;
     margin-top:20px ;
-    background-color: var(--clr-sky-900);
+    background-color: var(--clr-goodearth);
     color: var(--clr-neutral) ;
 
 }

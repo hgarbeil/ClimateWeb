@@ -18,6 +18,7 @@ const Pctage = [76.,16.,6.,2.] ;
 
 
 const continents=['Africa','Asia','Europe','North America','South America','Oceania'] ;
+// const countries=['China','United']
 
 
 // const ctx_gtemps = document.getElementById('gtemps_chart').getContext("2d");

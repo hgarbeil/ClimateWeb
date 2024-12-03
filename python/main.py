@@ -3,6 +3,21 @@ import numpy as np
 import panel as pn
 import plotly.express as px
 import math
+import requests 
+from bs4  import  BeautifulSoup
+
+
+renew_file = 'https://en.wikipedia.org/wiki/List_of_countries_by_renewable_electricity_production'
+
+renew_page = requests.get(renew_file).text
+soup = BeautifulSoup(renew_page, 'html.parser')
+table = soup.find('table', class_="wikitable sortable")
+df = pd.read_html(renew_file)[0]
+df = df.iloc[0:20]
+df.columns=['Country','Pct_Renewable','Renewable GWh','Hydro','Wind','Solar','Biofuel','Geoth']
+# df = pd.read_html(str(table))
+# df = pd.concat(df)
+df.to_csv('../data/country/top_renewable.csv',index=False) 
 
 
 countries = ['World','China','United States','India','Germany','France','United Kingdom','Russia','Japan','Brazil','Iran']
@@ -23,6 +38,8 @@ def round_to_sigfigs(x, sigfigs):
         return x
     return round(x, -int(np.floor(np.log10(abs(x)))) + sigfigs - 1)
 
+
+# get dataframe from wikipedia renewable table
 
 
 

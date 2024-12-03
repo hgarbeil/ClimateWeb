@@ -1,6 +1,7 @@
 const countryNavItem = document.getElementById('navlink_country') ;
 let countryFile = 'data/countries_source_oneyear.csv' ;
 let countryMixFile = 'data/country_energymix_2023.csv'
+let renewFile = 'data/country/top_renewable.csv' ;
 let countryString = [] ;
 let tableRows= [] ;
 let country_chart=null ;
@@ -44,6 +45,14 @@ let mainstring = `<section class="maincontent_top">
                                 <p class="rightinfo">Bar chart showing the sources for energy consumption of the top 10 greenhouse emitting countries. 
                                 </p>
                         </div>
+                    </div>
+                </div>
+                <div class="split-div">
+                    <div class="tablediv">
+                            <div id="table_renewables"></div>
+                            <p class="rightinfo">Bar chart showing the sources for energy consumption of the top 10 greenhouse emitting countries. 
+                                </p>
+                    
                     </div>
                 </div>
             </div>
@@ -116,6 +125,7 @@ function loadCountry () {
     }
     cboxstring = cboxstring + '</ul><input type="button" class="submitButton" onclick="loadCountryMix()" value="Submit"></form>' ;
     document.querySelector("div.countryList").innerHTML = cboxstring ;
+    top_renewables() ;
 }
 
 // country,code,year,total,Coal,Oil,Gas,Nuclear,Hydro,Wind,Solar,Other
@@ -415,4 +425,31 @@ function rowclick (indexVal){
 
     },false) ;
 
+}
+
+function top_renewables(){
+
+
+    
+    let makeTableStr = '<table><thead><tr><th>Country</th><th>CO2 (MT)</th><th>CO2 Per Capita (T/person)</th><th>CO2 Per GDP (T/$)</th></tr></thead><tbody>'
+
+    $ajaxUtils.sendGetRequest(renewFile, function(responseText){
+        let lines=responseText.split('\n') ;
+        for (let iline=1; iline<lines.length; iline++){
+            if (lines[iline].length <7) continue ;
+            let colVal = lines[iline].split(',') ;
+            if (iline==0) {
+
+            }
+            let rowstr = '' ;
+            rowstr = `<tr class="countryRow" onclick="rowclick(${iline})" ><td>${colVal[0]}</td><td>${co2Val}</td><td>${co2percapita}</td><td>${co2gdp}</td></tr>` ;
+            makeTableStr = makeTableStr + rowstr ;
+
+        }
+        makeTableStr = makeTableStr + '</tbody></table>' ;
+        let tableEl =document.getElementById('table_renewables') ;
+        
+        tableEl.innerHTML = makeTableStr ;
+
+    }, false) ;
 }
