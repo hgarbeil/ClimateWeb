@@ -35,8 +35,9 @@ let mainstring = `<section class="maincontent_top">
         </section>
         <section class="maincontent_bottom">
             <div class="main-full">
-            <h2>Per capita primary energy consumption by source, 2023</h2>
+               
                 <div class="split-div">
+                     <h2>Per capita primary energy consumption by source, 2023</h2>
                     <div class="split-div-left countryList"></div>
                     <div class="split-div-right">
                         
@@ -49,6 +50,7 @@ let mainstring = `<section class="maincontent_top">
                 </div>
                 <div class="split-div">
                     <div class="tablediv">
+                            <h2>Top Renewable Energy Countries (Renewable/Total)</h2>
                             <div id="table_renewables"></div>
                             <p class="rightinfo">Bar chart showing the sources for energy consumption of the top 10 greenhouse emitting countries. 
                                 </p>
@@ -430,8 +432,8 @@ function rowclick (indexVal){
 function top_renewables(){
 
 
-    
-    let makeTableStr = '<table><thead><tr><th>Country</th><th>CO2 (MT)</th><th>CO2 Per Capita (T/person)</th><th>CO2 Per GDP (T/$)</th></tr></thead><tbody>'
+    console.log("in renewables") ;
+    let makeTableStr = '<table><thead><tr><th>Country</th><th>% Renewable</th><th>Renewable GWH</th><th>Hydro</th><th>Wind</th><th>Solar</th></tr></thead><tbody>'
 
     $ajaxUtils.sendGetRequest(renewFile, function(responseText){
         let lines=responseText.split('\n') ;
@@ -442,7 +444,8 @@ function top_renewables(){
 
             }
             let rowstr = '' ;
-            rowstr = `<tr class="countryRow" onclick="rowclick(${iline})" ><td>${colVal[0]}</td><td>${co2Val}</td><td>${co2percapita}</td><td>${co2gdp}</td></tr>` ;
+            rowstr = `<tr class="countryRow" onclick="rowclick(${iline})" ><td>${colVal[0]}</td><td>${colVal[1]}</td><td>${colVal[2]}</td><td>${colVal[3]}</td>
+                <td>${colVal[4]}</td><td>${colVal[5]}</td></tr>` ;
             makeTableStr = makeTableStr + rowstr ;
 
         }
