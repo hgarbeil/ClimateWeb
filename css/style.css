@@ -14,6 +14,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
+  box-sizing: border-box ;
   /* width: 100dvw ;
   height : 100dvh ; */
 }
@@ -25,6 +26,8 @@ header {
   font-size: 1.6rem;
   background: linear-gradient(175deg, #3f87a6, #ebf8e1, #f69d3c);
   box-shadow: 6px 0px 5px gray;
+
+  width: 100% ;
 }
 
 
@@ -138,7 +141,7 @@ section.maincontent_top,section.maincontent_bottom {
     justify-content: space-evenly;
     gap: 10px ;
     padding: 20px 30px ;
-    width: 95% ;
+    width: auto ;
     background: #ebf8e1  ;
 
 
@@ -159,7 +162,7 @@ section.maincontent_top .main-full {
     border: 1px solid var(--clr-sky-900) ;
     box-shadow: 3px 0px 3px var(--clr-sky-900) ;
     padding: 20px 30px ;
-    margin: auto ;
+    /* margin: auto ; */
 
 }
 
@@ -187,6 +190,7 @@ section.maincontent_bottom .main-full {
     background: var(--clr-neutral) ;
     gap: 50px ;
     padding: 10px 30px ;
+    width: auto ;
 
 
 }
@@ -329,7 +333,7 @@ tbody th, tbody td {
 
 
 .main-full {
-    width: 95dvw ;
+    width: auto ;
     border: 1px solid var(--clr-sky-900) ;
     border-radius : 10px ;
     padding: 5px 15px ;
@@ -341,14 +345,21 @@ tbody th, tbody td {
     display:flex ;
     justify-content: space-around ;
     overflow: hidden ;
-    width: 90dvw ;
+    /* width: 90dvw ; */
     
     
 }
-.split-div .split_div_half {
-    flex: 1 1 0px ;
+.split-div .split-div-half {
+    flex: 1 1 42% ;
+    text-align: center;
+    padding: 5px 15px ;
 
 }
+
+.split_div_half h2 {
+    text-align: center;
+}
+
 .split-div .split-div-left {
     flex: 1 0 30% ;  
     display: flex ;
@@ -417,6 +428,9 @@ tbody th, tbody td {
     .divimage img {
         display: none ;
     }
+    div.title-block {
+        padding: 0px 15px ;
+    } 
 
 
     .topnav ul {
