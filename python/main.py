@@ -13,11 +13,14 @@ renew_page = requests.get(renew_file).text
 soup = BeautifulSoup(renew_page, 'html.parser')
 table = soup.find('table', class_="wikitable sortable")
 df = pd.read_html(renew_file)[0]
-df = df.iloc[0:20]
+# df = df.iloc[0:20]
 df.columns=['Country','Pct_Renewable','Renewable GWh','Hydro','Wind','Solar','Biofuel','Geoth']
+df = df.replace('%','',regex=True)
+df1 = df.sort_values(by=['Renewable GWh'],ascending=False)
 # df = pd.read_html(str(table))
 # df = pd.concat(df)
 df.to_csv('../data/country/top_renewable.csv',index=False) 
+df1.to_csv('../data/country/top_renewable_gwh.csv',index=False) 
 
 
 countries = ['World','China','United States','India','Germany','France','United Kingdom','Russia','Japan','Brazil','Iran']
@@ -156,7 +159,7 @@ df_continents_full.to_csv("../data/continents_source.csv", index=False)
 #print(df_major.sample(30))
 
 for country in countries :
-    outfile = country+'_co2.txt'
+    outfile = '../data/country/'+country+'_co2.txt'
     df_major[(df['country']==country)].to_csv('../data/'+outfile,index=False)
 df_major_year=df_major[df_major.year==2022]
 df_major_year=df_major_year.sort_values(by=['co2'],ascending=False)

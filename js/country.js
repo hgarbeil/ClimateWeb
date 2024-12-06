@@ -1,7 +1,6 @@
 const countryNavItem = document.getElementById('navlink_country') ;
 let countryFile = 'data/countries_source_oneyear.csv' ;
 let countryMixFile = 'data/country_energymix_2023.csv'
-let renewFile = 'data/country/top_renewable.csv' ;
 let countryString = [] ;
 let tableRows= [] ;
 let country_chart=null ;
@@ -420,34 +419,3 @@ function rowclick (indexVal){
 
 }
 
-function top_renewables(){
-
-
-    console.log("in renewables") ;
-    let makeTableStr = '<table id="myRenewTable" class="tablesorter-default" ><thead><tr><th>Country</th><th>% Renewable</th><th>Renewable GWH</th><th>Hydro</th><th>Wind</th><th>Solar</th></tr></thead><tbody>'
-
-    $ajaxUtils.sendGetRequest(renewFile, function(responseText){
-        let lines=responseText.split('\n') ;
-        for (let iline=1; iline<lines.length; iline++){
-            if (lines[iline].length <7) continue ;
-            let colVal = lines[iline].split(',') ;
-            if (iline==0) {
-
-            }
-            let rowstr = '' ;
-            rowstr = `<tr class="countryRow" onclick="rowclick(${iline})" ><td>${colVal[0]}</td><td>${colVal[1]}</td><td>${colVal[2]}</td><td>${colVal[3]}</td>
-                <td>${colVal[4]}</td><td>${colVal[5]}</td></tr>` ;
-            makeTableStr = makeTableStr + rowstr ;
-
-        }
-        makeTableStr = makeTableStr + '</tbody></table>' ;
-        let tableEl =document.getElementById('table_renewables') ;
-        
-        tableEl.innerHTML = makeTableStr ;
-        $(function() {
-            $("#myRenewTable").tablesorter();
-          });
-
-    }, false) ;
-    
-}
