@@ -36,29 +36,23 @@ let mainstring = `<section class="maincontent_top">
         <section class="maincontent_bottom">
             <div class="main-full">
                
-                <div class="split-div">
+                
                      <h2>Per capita primary energy consumption by source, 2023</h2>
+                <div class="split-div">
                     <div class="split-div-left countryList"></div>
-                    <div class="split-div-right">
+                    
                         
-                        <div class="chartdiv">
+                    <div class="split-div-right chartdiv">
                                 <canvas id="countrymix_chart"></canvas>
                                 <p class="rightinfo">Bar chart showing the sources for energy consumption of the top 10 greenhouse emitting countries. 
                                 </p>
-                        </div>
                     </div>
-                </div>
-                <div class="split-div">
-                    <div class="tablediv">
-                            <h2>Top Renewable Energy Countries (Renewable/Total)</h2>
-                            <div id="table_renewables"></div>
-                            <p class="rightinfo">Bar chart showing the sources for energy consumption of the top 10 greenhouse emitting countries. 
-                                </p>
-                    
-                    </div>
+                   
                 </div>
             </div>
         </section>` ;
+
+
 
 
 function loadCountry () {
@@ -142,7 +136,6 @@ function loadCountryMix () {
         }
     }
 
-    console.log(selected) ;
     
     let labels=['Coal','Oil','Gas','Nuclear','Hydro','Wind','Solar'];
     $ajaxUtils.sendGetRequest(countryMixFile, function(responseText){
@@ -304,12 +297,10 @@ function rowclick (indexVal){
     let co2_gas=[] ;
     let co2_oil=[] ;
     
-    console.log(countryString[indexVal]) ;
     for (tr of tableRows) {
         tr.classList.remove ('active');
 
     }
-    console.log(cfile);
     tableRows[indexVal-1].classList.add('active');
     $ajaxUtils.sendGetRequest(cfile, function(responseText){
         lines = responseText.split('\n') ;
@@ -433,7 +424,7 @@ function top_renewables(){
 
 
     console.log("in renewables") ;
-    let makeTableStr = '<table><thead><tr><th>Country</th><th>% Renewable</th><th>Renewable GWH</th><th>Hydro</th><th>Wind</th><th>Solar</th></tr></thead><tbody>'
+    let makeTableStr = '<table id="myRenewTable" class="tablesorter-default" ><thead><tr><th>Country</th><th>% Renewable</th><th>Renewable GWH</th><th>Hydro</th><th>Wind</th><th>Solar</th></tr></thead><tbody>'
 
     $ajaxUtils.sendGetRequest(renewFile, function(responseText){
         let lines=responseText.split('\n') ;
@@ -453,6 +444,10 @@ function top_renewables(){
         let tableEl =document.getElementById('table_renewables') ;
         
         tableEl.innerHTML = makeTableStr ;
+        $(function() {
+            $("#myRenewTable").tablesorter();
+          });
 
     }, false) ;
+    
 }

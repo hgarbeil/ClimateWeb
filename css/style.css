@@ -170,16 +170,16 @@ section.maincontent_bottom .main-full {
     justify-content: space-between ;
 }
 
-section.maincontent_bottom .main-full .split-div , section.maincontent_bottom .main-full .split-div {
+/* section.maincontent_bottom .main-full .split-div  {
     flex :  1 1 45% ;
     border: 1px solid var(--clr-sky-900) ;
     padding: 20px 30px ;
     display: flex ;
-    flex-direction: column;
+    flex-direction: row;
 
-    max-width: 700px ;
+    
 
-}
+} */
 
 #composition_chart {
 }
@@ -236,7 +236,7 @@ section.maincontent_bottom .main-full .split-div , section.maincontent_bottom .m
 } */
 
 .chartdiv {
-    /* max-width: 600px ; */
+    max-width: 1000px ; 
     display: flex ;
     flex-direction: column ;
     align-items: center ;
@@ -319,7 +319,7 @@ tbody th, tbody td {
   thead tr:nth-child(1){
     background-color: yellowgreen;
   }
-  tr:nth-child(odd){
+  tbody tr:nth-child(odd){
     background:#adf ;
   }
 
@@ -332,46 +332,65 @@ tbody th, tbody td {
   }
 
 
-/* .main-full {
-    width: 90% ;
+.main-full {
+    width: 95dvw ;
     border: 1px solid var(--clr-sky-900) ;
     border-radius : 10px ;
     padding: 5px 15px ;
+    display:flex ;
+    flex-direction: column;
     /* margin: auto ; */
-} */
+}
 .split-div {
     display:flex ;
-    justify-content: space-between ;
+    justify-content: space-around ;
     overflow: hidden ;
-     
-
+    width: 90dvw ;
+    
     
 }
 .split-div .split-div-left {
-    flex: 1 1 30% ; 
+    flex: 1 0 30% ;  
     display: flex ;
-    flex-direction: column ;
+    flex-direction: row ;
     font-size : 1.1rem ;
     min-width: 250px ;
 }
 
 .split-div .split-div-left ul {
-    /* display : flex ;
-    flex-direction : column ; */
-    display: inline-block ;
+    display : flex ;
+    flex-direction : column ; 
+    justify-content: left ;
+    
+    /* display: inline-block ; */
 
 }
+
+.split-div .split-div-right {
+    flex: 0 1 65% ;
+    display: flex ;
+}
+
+.split-div .split-div-right {
+    flex: 0 1 65% ;
+}
+
+.split-div-right canvas {
+    max-width: 90% ;
+}
+
+
 
 .split-div .split-div-left li {
     /* display : flex ;
     flex-direction : column ; */
-    display: inline-block ;
+    /* display: inline-block ; */
 
 }
 
 
 
-.split-div-left .submitButton {
+/* .split-div-left .submitButton {
     align-self: center ;
     padding: 5px 15px ;
     font-size: 1.1rem ;
@@ -386,8 +405,9 @@ tbody th, tbody td {
 }
 
 .split-div-right canvas {
-    max-width : 90% ;
+    max-width : 90% ; 
 }
+    */
 .countryList ul {
     list-style-type: none ;
 }
