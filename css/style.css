@@ -350,7 +350,7 @@ tbody th, tbody td {
     
 }
 .split-div .split-div-half {
-    flex: 1 1 42% ;
+    flex: 1 1 0px ;
     text-align: center;
     padding: 5px 15px ;
 
