@@ -1,0 +1,13 @@
+<h2>Global Energy Mix Time Series</h2>
+<p>
+<p>
+Data on a global, continental, and country was collected and made available from the Our World in Data Website. Specifically, data presented here 
+is available at the <a href="https://ourworldindata.org/grapher/per-capita-energy-stacked"  target="_blank"> Our World in Data CO2 Energy Mix data page</a> with a very
+detailed discussion and analysis at their <a href="https://ourworldindata.org/energy-mix"  target="_blank"> Our World in Data CO2 Energy Mix</a> page. 
+</p>
+<p>
+Data used by this website was collected from the OWID website above, and then processed using the main.py python script found in the python directory.
+</p>
+<p>Citation for the data source and article : <br><br><em>
+Hannah Ritchie and Pablo Rosado (2020) - “Energy Mix” Published online at OurWorldinData.org. Retrieved from: 'https://ourworldindata.org/energy-mix' [Online Resource]
+</em></p>
