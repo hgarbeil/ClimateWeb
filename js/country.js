@@ -19,7 +19,7 @@ let mainstring = `<section class="maincontent_top">
                     USA, India, and Russia make up over 50% of the world CO2 emissions of 38 billion MTonnes. United States and Russia far exceed the 
                     world CO2 per capita of approximately of 4.7 Tonnes/person.</p>
                 </div>
-                <button id="mloa_info" class="furtherinfo" onclick="furtherInfo(4)">Further Info</button>
+                <button id="co2_info" class="furtherinfo" onclick="furtherInfo(4)">Further Info</button>
             </div>
             <div class="main-right">
                 <h2 id="plotHeader"></h2>
@@ -45,6 +45,7 @@ let mainstring = `<section class="maincontent_top">
                                 <canvas id="countrymix_chart"></canvas>
                                 <p class="rightinfo">Bar chart showing the sources for energy consumption of the top 10 greenhouse emitting countries. 
                                 </p>
+                                <button id="co2_info" class="furtherinfo" onclick="furtherInfo(6)">Further Info</button>
                     </div>
                    
                 </div>

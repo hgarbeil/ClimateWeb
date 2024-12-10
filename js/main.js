@@ -26,6 +26,7 @@ function furtherInfo (num){
     let infile ="" ;
     slidebar.classList.toggle ("active") ;
     switch (num) {
+        // home page
         case 0 :
             infile = 'data/furtherinfo/mloa_co2.txt' ;
             break ;
@@ -38,11 +39,20 @@ function furtherInfo (num){
         case 3 : 
             infile = 'data/furtherinfo/continents_emit.txt';
             break ;
+
+        // country page
         case 4 :
             infile = 'data/furtherinfo/country_furtherinfo.txt' ;
             break ;
         case 5: 
-            infile = 'data/furtherinfo/country_emit.txt'
+            infile = 'data/furtherinfo/world_mix.txt'
+            break ;
+        case 6: 
+            infile = 'data/furtherinfo/country_mix.txt';
+            break ;
+
+        case 7 : 
+            infile = 'data/furtherinfo/renewable.txt' ;
             break ;
     }
     $ajaxUtils.sendGetRequest (infile, function (responseText){

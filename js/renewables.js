@@ -20,7 +20,7 @@ let mainstringRenew = `<section class="maincontent_top">
                 Renewables are now cheaper in most countries, and generate three times more jobs than fossil fuels.</p></em>
 
                 </div>
-                <button class="furtherinfo" onclick="furtherInfo(6)">Further Info</button>
+                <button class="furtherinfo" onclick="furtherInfo(7)">Further Info</button>
             </div>
             <div class="main-right">
                 <h2 >Renewable Energy Sources</h2>
@@ -35,7 +35,7 @@ let mainstringRenew = `<section class="maincontent_top">
                     </ul>
                     
                 </div>
-                <button id="gtemps_info" class="furtherinfo" onclick="furtherInfo(5)">Further Info</button>
+                <button id="gtemps_info" class="furtherinfo" onclick="furtherInfo(7)">Further Info</button>
             </div>
         </section>
         <section class="maincontent_bottom">
