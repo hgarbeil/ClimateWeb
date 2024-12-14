@@ -14,7 +14,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   box-sizing: border-box ;
   /* width: 100dvw ;
   height : 100dvh ; */
@@ -428,6 +428,19 @@ tbody th, tbody td {
 }
 
 
+
+@media only screen and (max-width: 1200px) {
+    
+
+
+    .topnav ul {
+        flex-direction: column ;
+        bottom: 0px ;
+        font-size: 1.2rem ;
+    }
+}
+
+
 @media only screen and (max-width: 1000px) {
     .divimage img {
         display: none ;
@@ -438,7 +451,7 @@ tbody th, tbody td {
 
 
     .topnav ul {
-        flex-direction: row ;
+        flex-direction: column ;
         bottom: 0px ;
         font-size: 1.2rem ;
     }
