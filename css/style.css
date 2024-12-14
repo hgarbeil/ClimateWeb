@@ -1,5 +1,5 @@
 :root {
-  --clr-sky-100: #add8e6;
+  --clr-sky-100: #bdd8e6;
   --clr-sky-500: #2f66a6 ;
   --clr-sky-900: #1f5796;
   --clr-hotearth: #ea6c14;
@@ -7,6 +7,7 @@
   --clr-neutral : #ebf8e1 ;
   --clr-neutral-gray : #aeafaf ;
   --clr-accent-100: #5255d6 ;
+  --clr-main-background  : #fefbd8 ; 
 
 }
 
@@ -142,7 +143,7 @@ section.maincontent_top,section.maincontent_bottom {
     gap: 10px ;
     padding: 20px 30px ;
     width: auto ;
-    background: #ebf8e1  ;
+    background-color: var(--clr-main-background);
 
 
 }
@@ -169,6 +170,7 @@ section.maincontent_top .main-full {
 section.maincontent_bottom .main-left, section.maincontent_bottom .main-right {
     flex :  1 1 45% ;
     border: 1px solid var(--clr-sky-900) ;
+    box-shadow: 3px 0px 3px var(--clr-sky-900) ;
     padding: 20px 30px ;
     display: flex ;
     flex-direction: column;
@@ -180,6 +182,8 @@ section.maincontent_bottom .main-left, section.maincontent_bottom .main-right {
 section.maincontent_bottom .main-full {
     display:flex ;
     justify-content: space-between ;
+    border: 1px solid var(--clr-sky-900) ;
+    box-shadow: 3px 0px 3px var(--clr-sky-900) ;
 }
 
 .main-footer {
