@@ -2,10 +2,15 @@
     display: block ;
     gap: .5rem ;
     font-size: 1.2rem ;
+    height: 100dvh ;
 }
 
 .ref-container h2{
     text-align: center ;
+}
+
+.ref-container li{
+    margin-top : 0.8rem ;
 }
 
 .ref-container li a {

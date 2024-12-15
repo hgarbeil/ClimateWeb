@@ -57,7 +57,8 @@ header {
 
 .topnav-list li {
   flex: 1 1 0 ;
-  color: var(--clr-hotearth);
+  /* color: var(--clr-hotearth); */
+  color: green ;
   text-align: center ;
   text-decoration: none;
 
@@ -288,11 +289,12 @@ section.maincontent_bottom .main-full {
 }
 
 .submitButton {
+    font-size: 1.2rem ;
     background-color: var(--clr-sky-900);
     color: var(--clr-neutral) ;
     max-width : 10rem ;
     border-radius: 15px;
-    padding: 5px 5px ;
+    padding: 5px 30px ;
     text-align: center ;
     margin-left: 10px ;
 }
@@ -479,7 +481,7 @@ tbody th, tbody td {
     .split-div-left .submitButton {
         /* float: right ; */
         font-size: .8rem ;
-        padding: 5px 10px ;
+        padding: 5px 30px ;
         position : relative ;
         left: 45% ;
         margin-bottom: 1rem ;
