@@ -10,7 +10,8 @@ let mainrefstring = `<section class="maincontent_top">
                 <li>Hannah Ritchie and Pablo Rosado (2020) - <a href="https://ourworldindata.org/energy-mix" 
                     target="_blank">“Energy Mix”</a> , Published online at OurWorldinData.org , accessed Oct 2024
                 </li>
-                
+                <li>NASA, <a href="https://science.nasa.gov/climate-change/" target="_blank">NASA Climate Change.</a> Published Online, accessed Jan 2025.
+                </li>
                 <li>NOAA Education, <a href="https://www.noaa.gov/education/resource-collections/climate/climate-change-impacts" target="_blank">NOAA Climate Change Impacts. </a> Published online at "https://www.noaa.gov/education/resource-collections/climate/climate-change-impacts", accessed October 2024
                 </li>
                 <li>Robert Rhode, Berkley Earth (2023), <a href="https://berkeleyearth.org/global-temperature-report-for-2023/" target="_blank"> 
