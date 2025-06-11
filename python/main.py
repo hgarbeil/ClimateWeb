@@ -12,11 +12,12 @@ renew_file = 'https://en.wikipedia.org/wiki/List_of_countries_by_renewable_elect
 renew_page = requests.get(renew_file).text
 soup = BeautifulSoup(renew_page, 'html.parser')
 table = soup.find('table', class_="wikitable sortable")
-df = pd.read_html(renew_file)[0]
-# df = df.iloc[0:20]
+df = pd.read_html(renew_file)[1]
+print(df.head(30))
 df.columns=['Country','Pct_Renewable','Renewable GWh','Hydro','Wind','Solar','Biofuel','Geoth']
 df = df.replace('%','',regex=True)
-df1 = df.sort_values(by=['Renewable GWh'],ascending=False)
+df1 = df.sort_values(b
+                     y=['Renewable GWh'],ascending=False)
 # df = pd.read_html(str(table))
 # df = pd.concat(df)
 df.to_csv('../data/country/top_renewable.csv',index=False) 
