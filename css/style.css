@@ -434,6 +434,19 @@ tbody th, tbody td {
 
 @media only screen and (max-width: 1200px) {
     
+    .main-footer {
+        flex-direction: column ;
+        justify-content: center;
+        align-items: center ;
+    }
+
+    .footer-left {
+        width: 80% ;
+    }
+    .footer-right{
+        width: 80% ;
+    }
+
 
 
     .topnav ul {
@@ -445,6 +458,9 @@ tbody th, tbody td {
 
 
 @media only screen and (max-width: 1000px) {
+
+    
+    
     .divimage img {
         display: none ;
     }

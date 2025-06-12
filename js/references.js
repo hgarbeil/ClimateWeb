@@ -17,6 +17,8 @@ let mainrefstring = `<section class="maincontent_top">
                 <li>Robert Rhode, Berkley Earth (2023), <a href="https://berkeleyearth.org/global-temperature-report-for-2023/" target="_blank"> 
                  Global Temperature Report for 2023"</a> , published online at "https://berkeleyearth.org/global-temperature-report-for-2023/" , accessed Oct 2024
                  </li>
+                 <li>Berkley Earth(2025),<a href="https://berkeleyearth.org/whats-new/?cat=temperature-updates" target="_blank">Berkley Earth Temperature Updates. </a>Published online at "https://berkeleyearth.org/whats-new/?cat=temperature-updates"
+                 </li>
                 <li>Scripps Institute of Oceanography, UC San Diego , <a href="https://scrippsco2.ucsd.edu/" target="_blank">Scripps CO2 Program, </a> Published online at "https://scrippsco2.ucsd.edu/", accessed October 2024
                 </li>
                 <li>Scripps Institute of Oceanography, UC San Diego , <a href="https://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record.html" target="_blank">Mauna Loa CO2 Data | Scripps CO2 Program | Scripps Institute of Oceanography</a> , Published online at "https://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record.html" , accessed October 2024
